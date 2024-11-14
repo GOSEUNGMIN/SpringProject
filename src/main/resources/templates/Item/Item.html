@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>トップページ</title>
+</head>
+<body>
+<div class="text-center" >
+  <li th:if="${session.user != null}">
+    <form th:action = "@{/logout}" method = "post">
+      <button type = "sumbit">로그아웃</button>
+    </form>
+  </li>
+  <li th:if="${session.user == null}">
+    <a th:href = "@{/login}">로그인</a>
+  </li>
+</div>
+<div>
+  <table>
+    <tr>
+      <th>글번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>작성시간</th>
+    </tr>
+    <tr th:each="item : ${itemlist}" th:object="${item}">
+      <td>
+        <a th:text="*{id}"></a>
+      </td>
+      <td>
+        <a th:text="*{descripton}"></a>
+      </td>
+      <td>
+        <a th:text="*{name}"></a>
+      </td>
+      <td>
+        <a th:text="*{createdtime}"></a>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+

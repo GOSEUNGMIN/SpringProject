@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>トップページ</title>
+</head>
+<body>
+<div class="text-center">
+    <h2>회원가입</h2>
+    <form th:action = "@{/signup}" th:method = "post">
+        <div>
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="id">
+            <span style = "color:red" th:text="${msg}"></span>
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password">
+            <span style = "color:red" th:text="${msg2}"></span>
+        </div>
+        <div>
+            <label>비밀번호 확인</label>
+            <input type="password" name="passwordCheck">
+        </div>
+        <div>
+            <label for="username">성함</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <button type="submit">회원가입</button>
+        <a th:href = "@{/login}">취소</a>
+        <div th:if="${msg3 != null}">
+            <p style = "color:red" th:text="${msg3}"></p>
+        </div>
+    </form>
+</div>
+</body>
+</html>

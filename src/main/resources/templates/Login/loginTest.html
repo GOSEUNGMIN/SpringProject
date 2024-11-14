@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+  <title>로그인 테스트</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <h2>로그인 결과값 PostMapping 테스트 결과</h2>
+  <p>아이디 : <span th:text="${Id}"></span></p>
+  <p>비밀번호 : <span th:text="${password}"></span></p>
+</div>
+</body>
+</html>
