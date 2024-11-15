@@ -6,14 +6,14 @@
 </head>
 <body>
 <div class="text-center" >
-  <li th:if="${session.user != null}">
+  <p th:if="${session.user != null}">
     <form th:action = "@{/logout}" method = "post">
       <button type = "sumbit">로그아웃</button>
     </form>
-  </li>
-  <li th:if="${session.user == null}">
+  </p>
+  <p th:if="${session.user == null}">
     <a th:href = "@{/login}">로그인</a>
-  </li>
+  </p>
 </div>
 <div>
   <table>
@@ -22,20 +22,27 @@
       <th>제목</th>
       <th>작성자</th>
       <th>작성시간</th>
+      <th>수정된시간</th>
     </tr>
     <tr th:each="item : ${itemlist}" th:object="${item}">
       <td>
-        <a th:text="*{id}"></a>
+        <a th:href="@{item/detail/{id}(id=*{id})}" th:text="*{id}"></a>
       </td>
       <td>
-        <a th:text="*{descripton}"></a>
+        <a th:href="@{item/detail/{id}(id=*{id})}" th:text="*{description}"></a>
       </td>
       <td>
-        <a th:text="*{name}"></a>
+        <a th:href="@{item/detail/{id}(id=*{id})}" th:text="*{name}"></a>
       </td>
       <td>
-        <a th:text="*{createdtime}"></a>
+        <a th:href="@{item/detail/{id}(id=*{id})}" th:text="*{createdtime}"></a>
       </td>
+      <td>
+        <a th:href="@{item/detail/{id}(id=*{id})}" th:text="*{updatedtime}"></a>
+      </td>
+    </tr>
+    <tr>
+      <button type="button" onclick="location.href='item/writer'">글쓰기</button>
     </tr>
   </table>
 </div>

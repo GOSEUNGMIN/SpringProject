@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>トップページ</title>
+</head>
+<body>
+<div class="text-center">
+  <h2>게시글 작성</h2>
+  <form th:action = "@{/item/writer}" th:method = "post">
+    <div>
+      <label for="description">내용</label>
+      <input type="text" id="description" name="description">
+    </div>
+    <div>
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <button type="submit">작성</button>
+    <a th:href = "@{/item}">취소</a>
+  </form>
+</div>
+</body>
+</html>
