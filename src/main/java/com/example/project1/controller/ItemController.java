@@ -2,6 +2,7 @@ package com.example.project1.controller;
 
 import com.example.project1.dto.ItemDto;
 import com.example.project1.service.TaskService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ItemController
 {
     private final TaskService taskService;
+    private final HttpSession session;
     @GetMapping
     public String Item(Model model)
     {
@@ -47,6 +49,7 @@ public class ItemController
     @GetMapping("/writer")
     public String getwriter()
     {
+        session.getAttribute("user");
         return "Item/writer";
     }
 
@@ -60,8 +63,8 @@ public class ItemController
     @GetMapping("/modify/{id}")
     public String getmodify(@PathVariable("id") Integer id, Model model)
     {
-        ItemDto item = taskService.detail(id);
-        model.addAttribute("modifyitem", item);
+        ItemDto modifyitem = taskService.detail(id);
+        model.addAttribute("modifyitem", modifyitem);
         return "Item/modify";
     }
 
