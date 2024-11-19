@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,6 +72,11 @@ public class TaskService
         return itemRepo.findByUserid(userId); // 아이디로 게시글 조회
     }
 
+    public List<ItemDto> alllist()
+    {
+        return itemRepo.findAll();
+    }
+
     public ItemDto detail(Integer id)
     {
 //        UserDto userDto = (UserDto) session.getAttribute("user");
@@ -94,16 +100,13 @@ public class TaskService
         UserDto userDto = (UserDto) session.getAttribute("user");
         String userId = userDto.getId(); // UserDto에서 ID를 추출
         dto.setUserid(userId);
-        dto.setCreatedtime(LocalDate.now());
+        dto.setCreatedtime(LocalDateTime.now());
         itemRepo.save(dto);
     }
 
     public void modify(ItemDto dto)
     {
-        UserDto userDto = (UserDto) session.getAttribute("user");
-        String userId = userDto.getId(); // UserDto에서 ID를 추출
-        dto.setUserid(userId);
-        dto.setUpdatedtime(LocalDate.now());
+        dto.setUpdatedtime(LocalDateTime.now());
         itemRepo.save(dto);
     }
 

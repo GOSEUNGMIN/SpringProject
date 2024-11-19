@@ -25,11 +25,14 @@
         </tr>
         <tr>
             <th>제목</th>
+            <td th:text="${item.name}"></td>
+        </tr>
+            <th>내용</th>
             <td th:text="${item.description}"></td>
         </tr>
         <tr>
             <th>작성자</th>
-            <td th:text="${item.name}"></td>
+            <td th:text="${item.userid}"></td>
         </tr>
         <tr>
             <th>작성시간</th>

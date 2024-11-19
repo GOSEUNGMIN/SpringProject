@@ -11,13 +11,18 @@
   <h2 style="padding: 12px">게시글 작성</h2>
   <div class="container-fluid" style="padding: 2% 20%">
   <form th:action = "@{/item/writer}" th:method = "post">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">제목</span>
+      <input type="text" class="form-control" aria-label="name" aria-describedby="basic-addon1" name="name" required>
+    </div>
     <div class="input-group" style="margin-bottom: 20px">
       <span class="input-group-text">내용</span>
-      <textarea style="height: 200px;" class="form-control" aria-label="With textarea" name="description"></textarea>
+      <textarea style="height: 200px;" class="form-control" aria-label="With textarea" name="description" required></textarea>
     </div>
     <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1">이름</span>
-      <input type="text" class="form-control" th:value="${session.user.username}" aria-label="name" aria-describedby="basic-addon1" name="name">
+      <span class="input-group-text" id="basic-addon2">작성자</span>
+      <input type="text" class="form-control" th:value="${session.user.id}"
+             aria-label="userid" aria-describedby="basic-addon1" name="userid" readonly>
     </div>
     <button type="submit" class="btn btn-primary">작성</button>
     <a class="btn btn-secondary" th:href = "@{/item}">취소</a>

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class ItemDto
     private Integer id;
     private String name;
     private String description;
-    private LocalDate createdtime;
-    private LocalDate updatedtime;
+    private LocalDateTime createdtime;
+    private LocalDateTime updatedtime;
     private String userid;
 }

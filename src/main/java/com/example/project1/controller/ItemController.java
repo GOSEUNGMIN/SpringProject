@@ -27,7 +27,9 @@ public class ItemController
     public String Item(Model model)
     {
         List<ItemDto> itemList = taskService.list();
+        List<ItemDto> itemAllList = taskService.alllist();
         model.addAttribute("itemlist", itemList);
+        model.addAttribute("itemalllist", itemAllList);
         return "Item/Item";
     }
 

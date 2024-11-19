@@ -12,26 +12,30 @@
   <div class="container-fluid" style="padding: 2% 20%">
     <!-- 수정 폼 -->
     <form th:action="@{/item/modify/{id}(id=${modifyitem.id})}" method="post" onsubmit="return confirm('정말로 수정하시겠습니까?');">
-
+      <input type="hidden" name="createdtime" id="createdtime" th:value="${modifyitem.createdtime}">
       <!-- 글번호 (읽기 전용) -->
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">글번호</span>
+        <span class="input-group-text" id="basic-addon1">번호</span>
         <input type="text" class="form-control" placeholder="${modifyitem.id}"
                th:value="${modifyitem.id}" aria-label="id" aria-describedby="id" name="id" readonly>
       </div>
-
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2">제목</span>
+        <input type="text" class="form-control" placeholder="이름"
+               th:value="${modifyitem.name}" aria-label="name" aria-describedby="name" name="name" required>
+      </div>
       <!-- 내용 (textarea) -->
       <div class="input-group" style="margin-bottom: 20px">
         <span class="input-group-text">내용</span>
         <textarea style="height: 200px;" class="form-control"
-                  th:text="${modifyitem.description}" aria-label="description" name="description"></textarea>
+                  th:text="${modifyitem.description}" aria-label="description" name="description" required></textarea>
       </div>
 
       <!-- 이름 -->
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon3">이름</span>
-        <input type="text" class="form-control" placeholder="이름"
-               th:value="${modifyitem.name}" aria-label="name" aria-describedby="name" name="name">
+        <span class="input-group-text" id="basic-addon3">작성자</span>
+        <input type="text" class="form-control" placeholder="작성자"
+               th:value="${modifyitem.userid}" aria-label="userid" aria-describedby="userid" name="userid" readonly>
       </div>
       <br>
       <!-- 수정 버튼 -->

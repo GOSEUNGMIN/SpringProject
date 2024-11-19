@@ -40,16 +40,57 @@
 <div>
   <table class="table table-striped table-hover">
     <tr>
-      <th>글번호</th>
+      <th>번호</th>
       <th>제목</th>
+      <th>내용</th>
       <th>작성자</th>
       <th>작성시간</th>
-      <th>수정된시간</th>
+      <th>수정시간</th>
     </tr>
+    <p th:if="${session.user.id == 'admin'}">
+      <tr th:each="item : ${itemalllist}" th:object="${item}">
+        <td>
+          <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+            <span th:text="*{id}"></span>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+            <span th:text="*{name}"></span>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+            <span th:text="*{description}"></span>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+            <span th:text="*{userid}"></span>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+            <span th:text="*{createdtime}"></span>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+            <span th:text="*{updatedtime}"></span>
+          </a>
+        </td>
+      </tr>
+    </p>
+    <p th:if="${session.user.id != 'admin'}">
     <tr th:each="item : ${itemlist}" th:object="${item}">
       <td>
         <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
           <span th:text="*{id}"></span>
+        </a>
+      </td>
+      <td>
+        <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
+          <span th:text="*{name}"></span>
         </a>
       </td>
       <td>
@@ -59,7 +100,7 @@
       </td>
       <td>
         <a th:href="@{item/detail/{id}(id=*{id})}" class="table-row-link">
-          <span th:text="*{name}"></span>
+          <span th:text="*{userid}"></span>
         </a>
       </td>
       <td>
@@ -73,6 +114,7 @@
         </a>
       </td>
     </tr>
+    </p>
   </table>
   <p class="d-flex justify-content-center">
     <a class="btn btn-primary" th:href="@{item/writer}">글쓰기</a>
